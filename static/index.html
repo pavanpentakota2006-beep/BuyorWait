@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy or Wait? — Financial Affordability & Cash-Flow Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="dark-theme">
+  <!-- App Container -->
+  <div class="app-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand-container">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Buy or Wait?</span>
+          <span class="brand-subtitle">Affordability Intelligence</span>
+        </div>
+      </div>
+
+      <div class="engine-status-badge">
+        <span class="pulse-dot"></span>
+        <span>Engine Online · Port 5176</span>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-section-label">CORE INTELLIGENCE</div>
+        <button class="nav-item active" data-tab="overview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+          <span>Executive Overview</span>
+        </button>
+        <button class="nav-item" data-tab="explorer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span>Decision Explorer</span>
+          <span class="nav-badge">250</span>
+        </button>
+        <button class="nav-item" data-tab="runway">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>90-Day Cash Runway</span>
+        </button>
+        
+        <div class="nav-section-label">OPERATIONS & LAB</div>
+        <button class="nav-item" data-tab="simulator">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+          <span>What-If Simulator</span>
+          <span class="nav-badge glow-badge">Live</span>
+        </button>
+        <button class="nav-item" data-tab="benchmark">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <span>Sample Benchmark</span>
+          <span class="nav-badge">25</span>
+        </button>
+        <button class="nav-item" data-tab="rates">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><line x1="12" y1="6" x2="12" y2="8"></line><line x1="12" y1="16" x2="12" y2="18"></line></svg>
+          <span>Currency Matrix</span>
+        </button>
+        <button class="nav-item" data-tab="audit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>Audit & Exports</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-stat">
+          <span class="lbl">LLM Inference Cost</span>
+          <span class="val text-emerald">$0.00 / 0 tokens</span>
+        </div>
+        <div class="sidebar-footer-stat">
+          <span class="lbl">Deterministic Suffix-Min</span>
+          <span class="val text-cyan">90-Day Safety Invariant</span>
+        </div>
+        <div class="sidebar-footer-stat">
+          <span class="lbl">Engine Clock</span>
+          <span class="val text-amber" id="sidebar-clock">--:--:--</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Command Bar -->
+      <header class="top-bar">
+        <div class="search-command-wrapper" onclick="openSearch()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="global-search-input" placeholder="Search Request ID, User ID, category... (Ctrl+K)" readonly>
+          <kbd class="shortcut-key">Ctrl+K</kbd>
+        </div>
+
+        <div class="top-actions">
+          <button class="btn btn-secondary btn-icon" id="theme-toggle" title="Toggle Theme">
+            <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <a href="/api/download/output.csv" class="btn btn-primary" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Download output.csv</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Content Views -->
+      <div class="view-container">
+
+        <!-- TAB 1: EXECUTIVE OVERVIEW -->
+        <section id="view-overview" class="tab-view active">
+          <div class="view-header">
+            <div>
+              <h1 class="view-title">Executive Affordability Telemetry</h1>
+              <p class="view-desc">Holistic 90-day cash-flow runway, liquidity boundary verification, and decision analytics for 250 evaluation requests.</p>
+            </div>
+            <div class="header-pills">
+              <span class="badge badge-emerald">250 Evaluated</span>
+              <span class="badge badge-cyan">0 Schema Violations</span>
+              <span class="badge badge-purple">Deterministic Rule Engine</span>
+            </div>
+          </div>
+
+          <!-- Hero KPI Deck -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon-wrap icon-cyan">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              </div>
+              <div class="kpi-content">
+                <span class="kpi-label">Total Purchase Requests</span>
+                <div class="kpi-value" id="kpi-total-requests">250</div>
+                <span class="kpi-hint">Covering 275 user profiles</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon-wrap icon-emerald">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              </div>
+              <div class="kpi-content">
+                <span class="kpi-label">Safe to Pay Immediately</span>
+                <div class="kpi-value text-emerald" id="kpi-affordable-now">--</div>
+                <span class="kpi-hint">Zero reserve violations today</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon-wrap icon-blue">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+              </div>
+              <div class="kpi-content">
+                <span class="kpi-label">Affordable With Plan</span>
+                <div class="kpi-value text-cyan" id="kpi-affordable-plan">--</div>
+                <span class="kpi-hint">Structured installment safe-path</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon-wrap icon-amber">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              </div>
+              <div class="kpi-content">
+                <span class="kpi-label">Safe Capital Liquidity</span>
+                <div class="kpi-value text-amber" id="kpi-safe-capital">--</div>
+                <span class="kpi-hint" id="kpi-capital-ratio">Capital safety ratio</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts and Analytics Grid -->
+          <div class="dashboard-analytics-grid">
+            
+            <!-- Affordability Status Breakdown -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <h3 class="panel-title">Affordability Status Distribution</h3>
+                <span class="panel-tag">Rule Engine Result</span>
+              </div>
+              <div class="distribution-list" id="status-distribution-container">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <!-- Payment Method Distribution -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <h3 class="panel-title">Recommended Payment Methods</h3>
+                <span class="panel-tag">Optimal Path</span>
+              </div>
+              <div class="distribution-list" id="method-distribution-container">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <!-- Invariant & Safety Checklist -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <h3 class="panel-title">Safety Invariants & Schema Verification</h3>
+                <span class="badge badge-emerald">Verified</span>
+              </div>
+              <div class="checklist-container">
+                <div class="check-item">
+                  <div class="check-icon check-pass">✓</div>
+                  <div class="check-text">
+                    <strong>Bounds Invariant (0 ≤ Amount Safe ≤ Requested)</strong>
+                    <span>Validated across all 250 requests with 0 out-of-bounds occurrences.</span>
+                  </div>
+                </div>
+                <div class="check-item">
+                  <div class="check-icon check-pass">✓</div>
+                  <div class="check-text">
+                    <strong>Valid Enums Compliance</strong>
+                    <span>100% adherence to allowed status and payment method enumerations.</span>
+                  </div>
+                </div>
+                <div class="check-item">
+                  <div class="check-icon check-pass">✓</div>
+                  <div class="check-text">
+                    <strong>Installment Schedule Matching</strong>
+                    <span>Every recommended installment matches supplied options precisely.</span>
+                  </div>
+                </div>
+                <div class="check-item">
+                  <div class="check-icon check-pass">✓</div>
+                  <div class="check-text">
+                    <strong>Zero LLM Token Cost ($0.00)</strong>
+                    <span>100% deterministic rule-based evaluation without inference latency or billable tokens.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Multi-Currency Volume Overview -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <h3 class="panel-title">Multi-Currency Global Footprint</h3>
+                <span class="panel-tag">5 Currencies</span>
+              </div>
+              <div class="distribution-list" id="currency-distribution-container">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- TAB 2: DECISION EXPLORER -->
+        <section id="view-explorer" class="tab-view">
+          <div class="view-header">
+            <div>
+              <h1 class="view-title">Decision Explorer</h1>
+              <p class="view-desc">Inspect, filter, and drill into all 250 purchase evaluations with detailed cash-flow safety explanations.</p>
+            </div>
+          </div>
+
+          <!-- Filter Toolbar -->
+          <div class="explorer-toolbar">
+            <div class="search-box">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="explorer-search" placeholder="Filter by Request ID, User ID, Description, Category...">
+            </div>
+
+            <div class="filter-group">
+              <select id="filter-status" class="select-control">
+                <option value="all">All Statuses (250)</option>
+                <option value="affordable_now">Affordable Now (73)</option>
+                <option value="affordable_with_plan">Affordable with Plan (51)</option>
+                <option value="not_affordable">Not Affordable (122)</option>
+                <option value="affordable_later">Affordable Later (4)</option>
+              </select>
+
+              <select id="filter-method" class="select-control">
+                <option value="all">All Methods (250)</option>
+                <option value="full_payment">Full Payment (73)</option>
+                <option value="installments">Installments (44)</option>
+                <option value="partial_payment">Partial Payment (7)</option>
+                <option value="not_recommended">Not Recommended (122)</option>
+                <option value="wait">Wait (4)</option>
+              </select>
+
+              <select id="filter-currency" class="select-control">
+                <option value="all">All Currencies (250)</option>
+                <option value="INR">INR (60)</option>
+                <option value="EUR">EUR (54)</option>
+                <option value="IDR">IDR (50)</option>
+                <option value="ZAR">ZAR (47)</option>
+                <option value="USD">USD (39)</option>
+              </select>
+
+              <button class="btn btn-secondary btn-sm" id="btn-reset-filters" type="button" onclick="resetExplorerFilters()" title="Reset all filters to show all 250 requests" style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                <span>Reset (250)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Filter Chips -->
+          <div class="filter-chips" style="margin: 12px 0 16px 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+            <span style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Quick Views:</span>
+            <button class="chip active" id="chip-exp-all" onclick="setExplorerFilters('all', 'all', 'all')">All Requests (250)</button>
+            <button class="chip" id="chip-exp-affordable_now" onclick="setExplorerFilters('affordable_now', 'all', 'all')">Affordable Now (73)</button>
+            <button class="chip" id="chip-exp-affordable_with_plan" onclick="setExplorerFilters('affordable_with_plan', 'all', 'all')">Affordable with Plan (51)</button>
+            <button class="chip" id="chip-exp-installments" onclick="setExplorerFilters('all', 'installments', 'all')">Installments (44)</button>
+            <button class="chip" id="chip-exp-not_affordable" onclick="setExplorerFilters('not_affordable', 'all', 'all')">Not Affordable (122)</button>
+            <button class="chip" id="chip-exp-affordable_later" onclick="setExplorerFilters('affordable_later', 'all', 'all')">Affordable Later (4)</button>
+          </div>
+
+          <!-- Table Container -->
+          <div class="table-container">
+            <table class="data-table" id="requests-table">
+              <thead>
+                <tr>
+                  <th>Request ID</th>
+                  <th>User ID</th>
+                  <th>Requested Amount</th>
+                  <th>Safe-to-Pay Limit Today</th>
+                  <th>Status</th>
+                  <th>Recommended Method</th>
+                  <th>Earliest Date</th>
+                  <th>Explanation</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="requests-table-body">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <span id="showing-count-text">Showing 250 of 250 requests</span>
+          </div>
+        </section>
+
+        <!-- TAB 3: 90-DAY CASH RUNWAY -->
+        <section id="view-runway" class="tab-view">
+          <div class="view-header">
+            <div>
+              <h1 class="view-title">90-Day Cash Runway Intelligence</h1>
+              <p class="view-desc">Live liquidity trajectory forecasting with event-driven daily balance simulation and reserve floor analysis.</p>
+            </div>
+            <div class="runway-user-picker">
+              <label>Select Request to Visualize:</label>
+              <select id="runway-request-select" class="select-control">
+                <!-- Injected via JS -->
+              </select>
+            </div>
+          </div>
+
+          <!-- User Telemetry Strip -->
+          <div class="telemetry-strip" id="runway-user-telemetry">
+            <div class="strip-card">
+              <span class="strip-label">User ID</span>
+              <span class="strip-value" id="strip-user-id">--</span>
+            </div>
+            <div class="strip-card">
+              <span class="strip-label">Home Currency</span>
+              <span class="strip-value text-cyan" id="strip-home-currency">--</span>
+            </div>
+            <div class="strip-card">
+              <span class="strip-label">Starting Balance</span>
+              <span class="strip-value text-emerald" id="strip-start-balance">--</span>
+            </div>
+            <div class="strip-card">
+              <span class="strip-label">Minimum Reserve Waterline</span>
+              <span class="strip-value text-rose" id="strip-min-reserve">--</span>
+            </div>
+            <div class="strip-card">
+              <span class="strip-label">Lowest Projected Balance</span>
+              <span class="strip-value" id="strip-lowest-balance">--</span>
+            </div>
+            <div class="strip-card">
+              <span class="strip-label">Safe-to-Pay Limit Today</span>
+              <span class="strip-value text-emerald" id="strip-safe-today">--</span>
+            </div>
+          </div>
+
+          <!-- Interactive Chart Card -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div class="chart-title-wrap">
+                <h3 class="panel-title">Projected Daily Liquidity Horizon (90 Days)</h3>
+                <span class="chart-legend">
+                  <span class="legend-item"><span class="legend-dot dot-cyan"></span> Projected Balance</span>
+                  <span class="legend-item"><span class="legend-dot dot-rose"></span> Minimum Reserve Line</span>
+                </span>
+              </div>
+              <div id="chart-scrubber-info" class="scrubber-badge">Hover over chart to scrub days</div>
+            </div>
+            
+            <div class="svg-chart-container" id="chart-container">
+              <svg id="runway-svg" viewBox="0 0 900 280" preserveAspectRatio="none">
+                <!-- Injected via JS -->
+              </svg>
+            </div>
+          </div>
+
+          <!-- Scheduled & Projected Events Table -->
+          <div class="panel-card" style="margin-top: 24px;">
+            <div class="panel-header">
+              <h3 class="panel-title">Scheduled & Detected Recurring Events</h3>
+              <span class="panel-tag">Cash Flow Drivers</span>
+            </div>
+            <div class="table-container" style="max-height: 280px; overflow-y: auto;">
+              <table class="data-table" id="events-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Direction</th>
+                    <th>Category</th>
+                    <th>Description / Concept</th>
+                    <th>Home Amount</th>
+                  </tr>
+                </thead>
+                <tbody id="events-table-body">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 4: WHAT-IF SIMULATOR -->
+        <section id="view-simulator" class="tab-view">
+          <div class="view-header">
+            <div>
+              <h1 class="view-title">What-If Purchase Scenario Laboratory</h1>
+              <p class="view-desc">Simulate any arbitrary purchase request against the live deterministic affordability engine with instant decision scoring.</p>
+            </div>
+            <div class="preset-buttons">
+              <button class="btn btn-secondary btn-sm" onclick="loadSimPreset('user_01', 15000, 'ZAR', 'Electronics')">Preset: User 01 (ZAR 15k)</button>
+              <button class="btn btn-secondary btn-sm" onclick="loadSimPreset('user_02', 800, 'USD', 'Travel')">Preset: User 02 ($800 USD → IDR)</button>
+              <button class="btn btn-secondary btn-sm" onclick="loadSimPreset('user_49', 25000000, 'IDR', 'Home')">Preset: User 49 (IDR 25M)</button>
+            </div>
+          </div>
+
+          <div class="simulator-layout">
+            <!-- Simulator Form -->
+            <div class="sim-form-card">
+              <h3 class="panel-title" style="margin-bottom: 20px;">Purchase Parameters</h3>
+              
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Select User ID</label>
+                  <select id="sim-user-id" class="select-control">
+                    <option value="user_01">user_01 (ZAR)</option>
+                    <option value="user_02">user_02 (IDR)</option>
+                    <option value="user_49" selected>user_49 (IDR)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Request Date</label>
+                  <input type="date" id="sim-request-date" class="input-control" value="2025-01-15">
+                </div>
+
+                <div class="form-group">
+                  <label>Requested Amount</label>
+                  <input type="number" id="sim-amount" class="input-control" value="5000" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Currency</label>
+                  <select id="sim-currency" class="select-control">
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="INR">INR (₹)</option>
+                    <option value="IDR">IDR (Rp)</option>
+                    <option value="ZAR">ZAR (R)</option>
+                  </select>
+                </div>
+
+                <!-- Live FX Conversion Preview Strip -->
+                <div class="form-group full-width" id="sim-fx-row" style="display: none;">
+                  <div class="fx-preview-box">
+                    <div class="fx-preview-badge">Live Exchange Rate Conversion</div>
+                    <div class="fx-preview-text" id="sim-fx-preview-text">--</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Category</label>
+                  <input type="text" id="sim-category" class="input-control" value="Electronics">
+                </div>
+
+                <div class="form-group">
+                  <label>Desired Completion Date</label>
+                  <input type="date" id="sim-completion-date" class="input-control" value="2025-03-30">
+                </div>
+
+                <div class="form-group full-width">
+                  <label>Item Description</label>
+                  <input type="text" id="sim-desc" class="input-control" value="High-Performance Workstation Upgrade">
+                </div>
+
+                <div class="form-group full-width checkbox-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="sim-partial" checked>
+                    <span>User will consider partial payments if full payment is unsafe</span>
+                  </label>
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-block" id="btn-run-simulation" onclick="executeSimulation()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>Execute Affordability Engine</span>
+              </button>
+            </div>
+
+            <!-- Simulator Output -->
+            <div class="sim-result-card" id="sim-result-card">
+              <div class="sim-placeholder" id="sim-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                <h4>Ready for Evaluation</h4>
+                <p>Select parameters on the left and run the deterministic engine to view live decision telemetry and cashflow runway impact.</p>
+              </div>
+
+              <div class="sim-live-content" id="sim-live-content" style="display: none;">
+                <div class="sim-status-header">
+                  <div>
+                    <div class="status-badge-lg" id="sim-result-status-badge">Affordable With Plan</div>
+                    <div class="sim-context-subtext" id="sim-result-context-sub">--</div>
+                  </div>
+                  <div class="sim-meta-item">
+                    <span class="meta-lbl">Safe-to-Pay Limit Today</span>
+                    <span class="meta-val text-emerald" id="sim-result-safe-amount">--</span>
+                    <span class="meta-sub" style="font-size: 11px; color: var(--text-muted);">Max safe spend before reserve breach</span>
+                  </div>
+                </div>
+
+                <!-- FX Conversion Banner (when cross-currency occurs) -->
+                <div class="fx-conversion-banner" id="sim-result-fx-banner" style="display: none;">
+                  <div class="fx-banner-content">
+                    <span class="fx-badge">Cross-Currency Conversion Applied</span>
+                    <span class="fx-calc font-mono" id="sim-result-fx-calc">--</span>
+                    <span class="fx-rate" id="sim-result-fx-rate">--</span>
+                  </div>
+                </div>
+
+                <div class="sim-decision-box">
+                  <span class="box-title">Engine Decision Explanation</span>
+                  <p id="sim-result-explanation">--</p>
+                </div>
+
+                <div class="sim-details-grid">
+                  <div class="detail-box">
+                    <span class="lbl">Recommended Method</span>
+                    <span class="val" id="sim-result-method">--</span>
+                  </div>
+                  <div class="detail-box">
+                    <span class="lbl">Payment Plan</span>
+                    <span class="val font-mono" id="sim-result-plan">--</span>
+                  </div>
+                  <div class="detail-box">
+                    <span class="lbl">Earliest Safe Full Date</span>
+                    <span class="val" id="sim-result-earliest-date">--</span>
+                  </div>
+                  <div class="detail-box">
+                    <span class="lbl">Spending Changes Needed</span>
+                    <span class="val" id="sim-result-changes">--</span>
+                  </div>
+                </div>
+
+                <div class="sim-chart-wrap" style="margin-top: 18px;">
+                  <div class="chart-header" style="margin-bottom: 8px;">
+                    <span class="box-title">Simulated 90-Day Cash Runway</span>
+                    <div class="chart-legend">
+                      <div class="legend-item"><span class="legend-dot dot-cyan"></span> Projected Balance</div>
+                      <div class="legend-item"><span class="legend-dot dot-rose"></span> Policy Reserve</div>
+                    </div>
+                  </div>
+                  <div class="svg-chart-container" style="height: 230px;">
+                    <svg id="sim-runway-svg" viewBox="0 0 800 230" preserveAspectRatio="none"></svg>
+                  </div>
+
+                  <!-- 3 Actionable Runway Metrics requested -->
+                  <div class="sim-runway-metrics-grid" style="margin-top: 14px;">
+                    <div class="runway-metric-box">
+                      <span class="m-lbl">Minimum Projected Balance</span>
+                      <span class="m-val" id="sim-metric-min-balance">--</span>
+                      <span class="m-sub">Lowest balance across 90 days</span>
+                    </div>
+                    <div class="runway-metric-box">
+                      <span class="m-lbl">Reserve Breach Risk</span>
+                      <span class="m-val" id="sim-metric-breach">--</span>
+                      <span class="m-sub" id="sim-metric-breach-sub">Policy safety limit check</span>
+                    </div>
+                    <div class="runway-metric-box">
+                      <span class="m-lbl">Policy Reserve Threshold</span>
+                      <span class="m-val" id="sim-metric-reserve">--</span>
+                      <span class="m-sub">Mandatory emergency reserve</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 5: SAMPLE BENCHMARK -->
+        <section id="view-benchmark" class="tab-view">
+          <div class="view-header">
+            <div>
+              <h1 class="view-title">Sample Benchmark & Accuracy Evaluation</h1>
+              <p class="view-desc">Evaluating deterministic engine decisions against the 25 official organizer ground-truth worked examples.</p>
+            </div>
+            <div class="header-pills">
+              <span class="badge badge-emerald" id="bench-status-acc">Status Accuracy: 44.0%</span>
+              <span class="badge badge-cyan" id="bench-method-acc">Method Accuracy: 52.0%</span>
+              <span class="badge badge-purple">100% Invariants Match</span>
+            </div>
+          </div>
+
+          <!-- Benchmark Toolbar -->
+          <div class="explorer-toolbar" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+            <div style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+              <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted);">Filter by Result</span>
+              <div class="filter-chips">
+                <button class="chip active" onclick="filterBenchmark('all', this)" id="chip-bench-all">All Samples (25)</button>
+                <button class="chip" onclick="filterBenchmark('matches', this)" id="chip-bench-matches">Matches (10)</button>
+                <button class="chip" onclick="filterBenchmark('mismatches', this)" id="chip-bench-mismatches">Residual Mismatches (15)</button>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+              <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted);">Filter by Currency</span>
+              <div class="filter-chips" id="bench-currency-chips">
+                <button class="chip active" onclick="filterBenchmarkByCurrency('all', this)" id="chip-bench-cur-all">All Currencies</button>
+                <button class="chip" onclick="filterBenchmarkByCurrency('ZAR', this)" id="chip-bench-cur-zar">ZAR</button>
+                <button class="chip" onclick="filterBenchmarkByCurrency('IDR', this)" id="chip-bench-cur-idr">IDR</button>
+                <button class="chip" onclick="filterBenchmarkByCurrency('INR', this)" id="chip-bench-cur-inr">INR</button>
+                <button class="chip" onclick="filterBenchmarkByCurrency('EUR', this)" id="chip-bench-cur-eur">EUR</button>
+                <button class="chip" onclick="filterBenchmarkByCurrency('USD', this)" id="chip-bench-cur-usd">USD</button>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Table Container -->
+          <div class="table-container">
+            <table class="data-table" id="benchmark-table">
+              <thead>
+                <tr>
+                  <th>Request ID</th>
+                  <th>User ID</th>
+                  <th>Amount</th>
+                  <th>Expected Status</th>
+                  <th>Predicted Status</th>
+                  <th>Expected Method</th>
+                  <th>Predicted Method</th>
+                  <th>Match Result</th>
+                </tr>
+              </thead>
+              <tbody id="benchmark-table-body">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- TAB 6: CURRENCY MATRIX -->
+        <section id="view-rates" class="tab-view">
+          <div class="view-header">
+            <div>
+              <h1 class="view-title">Multi-Currency Graph & Conversion Engine</h1>
+              <p class="view-desc">Direct and BFS shortest-path multi-hop exchange rate graph linking USD, EUR, INR, IDR, and ZAR.</p>
+            </div>
+          </div>
+
+          <div class="simulator-layout">
+            <!-- Converter Card -->
+            <div class="sim-form-card">
+              <h3 class="panel-title" style="margin-bottom: 16px;">Live Currency Converter</h3>
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <label>Amount</label>
+                    <div class="quick-chips" style="display: flex; gap: 6px;">
+                      <button type="button" class="chip" style="padding: 2px 8px; font-size: 11px;" onclick="setConvertAmount(100)">100</button>
+                      <button type="button" class="chip" style="padding: 2px 8px; font-size: 11px;" onclick="setConvertAmount(500)">500</button>
+                      <button type="button" class="chip active" style="padding: 2px 8px; font-size: 11px;" onclick="setConvertAmount(1000)">1,000</button>
+                      <button type="button" class="chip" style="padding: 2px 8px; font-size: 11px;" onclick="setConvertAmount(5000)">5,000</button>
+                    </div>
+                  </div>
+                  <input type="number" id="convert-amount" class="input-control" value="1000" step="1" oninput="executeCurrencyConversion()">
+                </div>
+                <div class="form-group">
+                  <label>From Currency</label>
+                  <select id="convert-from" class="select-control" onchange="executeCurrencyConversion()">
+                    <option value="USD" selected>USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="INR">INR (₹)</option>
+                    <option value="IDR">IDR (Rp)</option>
+                    <option value="ZAR">ZAR (R)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>To Currency</label>
+                  <select id="convert-to" class="select-control" onchange="executeCurrencyConversion()">
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="INR" selected>INR (₹)</option>
+                    <option value="IDR">IDR (Rp)</option>
+                    <option value="ZAR">ZAR (R)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 10px; margin-top: 14px;">
+                <button class="btn btn-secondary btn-sm" id="btn-swap-currencies" type="button" onclick="swapCurrencies()" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8v12M17 20l4-4M17 20l-4-4"/></svg>
+                  <span>Swap Currencies</span>
+                </button>
+                <button class="btn btn-primary btn-sm" id="btn-recalculate-convert" type="button" onclick="recalculateCurrencyManual()" style="flex: 1.5; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                  <svg id="recalc-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                  <span id="recalc-btn-text">Recalculate Now</span>
+                </button>
+              </div>
+
+              <div class="conversion-result-box" id="conversion-result-box" style="margin-top: 18px;">
+                <span class="conv-label">Converted Value in Target Currency</span>
+                <div class="conv-value" id="conv-display-value">--</div>
+                <span class="conv-rate font-mono" id="conv-display-rate">--</span>
+              </div>
+            </div>
+
+            <!-- Rate Matrix Table -->
+            <div class="panel-card">
+              <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <div>
+                  <h3 class="panel-title">Active Exchange Rate Graph Pairs</h3>
+                  <span class="panel-tag" id="rates-count-tag">Loading...</span>
+                </div>
+                <div class="filter-chips" id="rates-filter-chips">
+                  <button class="chip active" onclick="filterRates('all', this)" id="chip-rates-all">All</button>
+                  <button class="chip" onclick="filterRates('ZAR', this)" id="chip-rates-zar">ZAR</button>
+                  <button class="chip" onclick="filterRates('USD', this)" id="chip-rates-usd">USD</button>
+                  <button class="chip" onclick="filterRates('EUR', this)" id="chip-rates-eur">EUR</button>
+                  <button class="chip" onclick="filterRates('INR', this)" id="chip-rates-inr">INR</button>
+                  <button class="chip" onclick="filterRates('IDR', this)" id="chip-rates-idr">IDR</button>
+                </div>
+              </div>
+              <div class="table-container" style="max-height: 420px; overflow-y: auto;">
+                <table class="data-table" id="rates-table">
+                  <thead>
+                    <tr>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Exchange Rate</th>
+                      <th>Path Type</th>
+                    </tr>
+                  </thead>
+                  <tbody id="rates-table-body">
+                    <!-- Injected via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 7: AUDIT & EXPORT -->
+        <section id="view-audit" class="tab-view">
+          <div class="view-header">
+            <div>
+              <h1 class="view-title">Audit Ledger & Deliverables Studio</h1>
+              <p class="view-desc">Schema validation, zero-token cost documentation, and instant export center for competition deliverables.</p>
+            </div>
+          </div>
+
+          <div class="audit-grid">
+            <div class="panel-card">
+              <div class="panel-header">
+                <h3 class="panel-title">Export Verified Deliverables</h3>
+                <span class="badge badge-emerald">Ready</span>
+              </div>
+              <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                The official scored predictions have been generated and validated with zero out-of-bounds rows or schema violations.
+              </p>
+              <div class="export-actions-list">
+                <a href="/api/download/output.csv" class="export-row-link" download>
+                  <div class="export-icon">CSV</div>
+                  <div class="export-info">
+                    <strong>output.csv</strong>
+                    <span>250 Predictions · All 8 required columns</span>
+                  </div>
+                  <div class="export-btn-pill">Download</div>
+                </a>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="panel-header">
+                <h3 class="panel-title">Zero LLM Inference Verification</h3>
+                <span class="badge badge-purple">Audited</span>
+              </div>
+              <div class="audit-report-text">
+                <p><strong>Cost Accounting Report:</strong></p>
+                <ul>
+                  <li><strong>LLM Inference Calls:</strong> 0 calls</li>
+                  <li><strong>Input / Output Tokens Billed:</strong> 0 tokens ($0.00 total)</li>
+                  <li><strong>Methodology:</strong> 100% deterministic cashflow runway construction over a 90-day forecast horizon.</li>
+                  <li><strong>Image Resolution:</strong> 16 receipt/payslip missing values resolved during offline preparation from image metadata.</li>
+                  <li><strong>Safety Invariants:</strong> Strict suffix-minimum cash retention preserving user <code>minimum_balance_to_keep</code>.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Deep Dive Flyout Modal -->
+  <div class="modal-backdrop" id="deepdive-modal" onclick="closeModal(event)">
+    <div class="modal-dialog" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="modal-req-id">Request Deep Dive</h2>
+          <span class="modal-subtitle" id="modal-req-user">User Details</span>
+        </div>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body-content">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Universal Command Palette Search Modal -->
+  <div class="search-palette-backdrop" id="search-palette" onclick="closeSearchPalette(event)">
+    <div class="search-palette-dialog" onclick="event.stopPropagation()">
+      <div class="palette-input-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="palette-search-input" placeholder="Type a Request ID, User ID, or tab name..." oninput="handlePaletteSearch(this.value)">
+      </div>
+      <div class="palette-results" id="palette-results">
+        <!-- Results injected here -->
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
